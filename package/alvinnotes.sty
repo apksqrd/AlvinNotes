@@ -1,0 +1,49 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{alvinnotes}[2023/8/29 Pre-Alpha v0.0]
+
+\RequirePackage{tcolorbox}
+\tcbuselibrary{many}
+
+\newcounter{problemcounter}
+\newcounter{subproblemcounter}[problemcounter]
+
+\newenvironment{problem}[1][]{
+    \pagebreak[3] % high priority page break suggestion
+    \refstepcounter{problemcounter}
+    \begin{tcolorbox}[
+            title={Problem \theproblemcounter. #1},
+            colback=blue!10, % background color is feint blue
+            breakable, % multi page
+            enhanced jigsaw, % make the breaks look nicer
+        ]
+}
+{
+    \end{tcolorbox}
+    % \penalty0 % if there is a page break within a problem, there is a higer penalty than usual
+    \pagebreak[3]
+}
+
+\newenvironment{subproblem}[1][]
+{
+    \pagebreak[2]
+    \refstepcounter{subproblemcounter}
+    \addtolength{\parindent}{1em}
+    \theproblemcounter\alph{subproblemcounter}.
+}
+{
+    \addtolength{\parindent}{-1em}
+    \pagebreak[2]
+}
+
+\newenvironment{solution}{
+    \begin{tcolorbox}[
+            title={\textbf{Solution}},
+            sharp corners,
+            breakable,
+            enhanced jigsaw,
+        ]        
+}
+{
+    \end{tcolorbox}
+    \pagebreak[1]
+}
