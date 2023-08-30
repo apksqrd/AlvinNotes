@@ -1,0 +1,3 @@
+Run: `python ~/Downloads/LaTeX-Workshop-master/dev/pkgcommand.py -i package/alvinnotes.cwl -o destdir package/alvinnotes.cwl`{:.shell} After updating the .cwl file and downloading <https://github.com/James-Yu/LaTeX-Workshop>.
+
+If you add the directory into the "latex-workshop.intellisense.package.dirs" setting afterwards, it works with autocomplete and stuff.
